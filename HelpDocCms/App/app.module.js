@@ -23,7 +23,7 @@ angular.module("post.module").config(function ($stateProvider, $urlRouterProvide
             controller: "posts.controller"
         })
         .state('posts.show', {
-            url: '/:id',
+            url: '/show/:id',
             templateUrl: "app/post/views/show-post.html",
             controller: "post.controller"
         })
@@ -33,12 +33,12 @@ angular.module("post.module").config(function ($stateProvider, $urlRouterProvide
             controller: "post.controller"
         })
          .state('posts.edit', {
-             url: "/posts/edit/:id",
+             url: "/edit/:id",
              templateUrl: "app/post/views/post-editor.html",
              controller: "post-edit.controller"
          });
 }).run(function ($state) {
-    $state.go('posts'); //make a transition to poss state when app starts
+    $state.go('posts'); //make a transition to posts state when app starts
 });
 
 angular.module("post.module").config(function ($routeProvider, $locationProvider, $httpProvider) {

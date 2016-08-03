@@ -69,6 +69,9 @@ namespace HelpDoc.Api
                 post.SortOrder = db.Posts.Max(p => p.SortOrder) + 1;
 
             }
+
+            post.PublishedOn = DateTime.UtcNow;
+
             post.CreatedBy = "admin";
             db.Posts.Add(post);
             db.Update(post);

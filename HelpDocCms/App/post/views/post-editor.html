@@ -14,11 +14,10 @@
             <input type="text" class="form-control" id="tag" ng-model="post.tag">
         </div>
 
-        <div class="form-group">
-            <label for="publishedOn">Published On:</label>
-            <input type="text" class="form-control" id="publishedOn" ng-model="post.publishedOn" 
+        
+        <input type="hidden" class="form-control" id="publishedOn" ng-model="post.publishedOn" 
                    date-keys date-picker>
-        </div>
+        
          
         <button type="submit" class="btn btn-default" data-ng-click="update()">Submit</button>
 

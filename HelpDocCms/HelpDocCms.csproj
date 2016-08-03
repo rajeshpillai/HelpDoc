@@ -168,7 +168,6 @@
     <Content Include="App\post\post.controller.js" />
     <Content Include="App\post\posts.controller.js" />
     <Content Include="App\post\postlist.directive.js" />
-    <Content Include="App\post\collapsible.directive.js" />
     <Content Include="App\post\section.service.js" />
     <Content Include="App\post\views\directives\post-list.html" />
     <Content Include="App\post\views\post-editor.html" />
