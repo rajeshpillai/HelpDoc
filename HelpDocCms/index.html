@@ -54,17 +54,6 @@
         Search:
         <input type="text" class="float:left" style="width:200px" ng-model="search" placeholder="search" />
     </div>
-
-
-    <br /><br />
-
-    <!-- Anchors -->
-    <div class="anchor">
-        <a href="" ng-click="gotoAnchor(post.id)" ng-repeat="post in posts | orderBy:sortFn  | filter:search | filter:genreFilter track by $index">
-            {{post.id}}
-        </a>
-    </div>
-
     <!-- main content-->
     <div style="margin-top:50px;">
         <div class="row" style="margin-bottom:10px;">

@@ -17,12 +17,10 @@ namespace BookReview.Models
         public static List<Tag> Genres = new List<Tag>();
         static StubData()
         {
-            Genres.Add(new Tag("Fiction"));
-            Genres.Add(new Tag("Programming"));
-            Genres.Add(new Tag("Crime"));
-            Genres.Add(new Tag("Suspense"));
-            Genres.Add(new Tag("Thriller"));
-            Genres.Add(new Tag("Classic"));
+            Genres.Add(new Tag("Customization"));
+            Genres.Add(new Tag("FAQ"));
+            Genres.Add(new Tag("How to Do?"));
+            Genres.Add(new Tag("Common Tasks"));
 
             SetupData();
 
@@ -66,14 +64,14 @@ namespace BookReview.Models
             {
                 var post = new Post
                 {
-                    Author = "Author " + i.ToString(),
-                    Title = "Book " + i.ToString(),
+                    CreatedBy = "Author " + i.ToString(),
+                    Title = "Help Topic  " + i.ToString(),
                     Url = "<a target='_blank' href='https://leanpub.com/qlikview-recipes'>Book webpage</a>",
                     Id = i,
                     ImageUrl = "/uploads/posts/" + (i % 2 == 0 ? "1.png" : "2.png"),
                     PublishedOn = DateTime.Now.AddDays(-i),
                     ReadingTime = rndDuration.Next(1, 12),
-                    Description = "Over a good boook "
+                    Description = "The content of the help goes here.  Be as detailed as possible. "
                     
                     //Genre = Genres.ElementAt(rndDuration.Next(1, Genres.Count))
                 };

@@ -3,8 +3,7 @@
         <tr>
             <td>Id</td>
             <td>Book Name</td>
-            <td>Author </td>
-            <td>Genre</td>
+            <td>Created By </td>
             <td><a href="#" ng-click="orderBy='readingTime';reverse = !reverse">Reading Time</a></td>
             <td><a href="#" ng-click="orderBy='reviews.length';reverse = !reverse">Reviews</a></td>
             <td><a href="#" ng-click="orderBy='publishedOn';reverse = !reverse">Published On</a></td>
@@ -16,9 +15,8 @@
     <tbody>
         <tr id="anchor{{post.id}}" data-ng-repeat="post in posts | orderBy: orderBy : reverse  | filter:search  |filter:genreFilter track by $index">
             <td>{{ post.id }}</td>
-            <td>{{ post.postName }}</td>
-            <td>{{ post.author }}</td>
-            <td>{{ post.genre}}</td>
+            <td>{{ post.title }}</td>
+            <td>{{ post.createdBy }}</td>
             <td>{{ post.readingTime | durations }}</td>
             <td><span>{{post.reviews.length}}</span></td>
             <td>{{post.publishedOn | date:mediumDate}}</td>

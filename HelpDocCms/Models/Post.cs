@@ -17,7 +17,7 @@ namespace BookReview.Models
         public string Description { get; set; }
 
         [StringLength(50)]
-        public string Author { get; set; }
+        public string CreatedBy { get; set; }
 
         [StringLength(255)]
         public string Url { get; set; }
