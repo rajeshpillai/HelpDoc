@@ -19,10 +19,7 @@
             <ul class="nav navbar-nav">
                 <li class="active"><a href="#" ui-sref="posts()">Home</a></li>
                 <li><a href="#" ng-click="loadAddView()">NEW DOCUMENT</a></li>
-                <li ng-controller="auth.controller" class="pull-right">
-                    <a href="#" ng-click="logout()"
-                       ng-show="showLogout">Logout->{{username}}</a>
-                </li>
+               
                 <li class="dropdown">
                     <a data-toggle="dropdown" class="dropdown-toggle" href="#">Messages <b class="caret"></b></a>
                     <ul role="menu" class="dropdown-menu">
@@ -40,7 +37,10 @@
                 </div>
             </form>
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="#">Login</a></li>
+                <li ng-controller="auth.controller" class="pull-right">
+                    <a href="#" ng-click="logout()"
+                       ng-show="showLogout">Logout->{{username}}</a>
+                </li>
             </ul>
         </div>
     </nav>

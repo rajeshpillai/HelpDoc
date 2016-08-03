@@ -1,5 +1,5 @@
 ﻿angular.module("post.module").controller('posts.controller',
-    function ($scope, $anchorScroll, $location, $routeParams, $stateParams, $cookies, $locale, posts, PostFactory, AuthSessionService, RatingService) {
+    function ($scope, $anchorScroll, $location, $routeParams, $stateParams, $cookies, $locale, PostFactory, AuthSessionService, RatingService) {
     /*
      * NOTES:  posts is injected from 'route resolve'
      */
@@ -23,22 +23,24 @@
         $scope.sortOn = $cookies.get('mySort');
     }
 
-    $scope.posts = posts.data;
+    var tag = $stateParams.tag;
+    if (tag === undefined || tag === null || tag.trim() == '') {
+        PostFactory.getAll().success(function (data) {
+            $scope.posts = data;
+        });
+    }
+    else {
+        PostFactory.getByTag(tag).success(function (data) {
+            $scope.posts = data;
+        })
+    }
 
     
     PostFactory.tags().success(function (data) {
         $scope.tags = data;
     });
 
-   // filter method
-    $scope.filterByBookOrAuthor = function (post) {
-        if ($.trim($scope.search) == '') {
-            return true;
-        }
-        return (post.postName.toLowerCase().startsWith($scope.search.toLowerCase()))
-            || (post.author.toLowerCase().startsWith($scope.search.toLowerCase()));
-    }
-
+   
     // custom sort function
     $scope.sortFn = function (post) {
         if ($scope.sortOn == "publishedOn") {

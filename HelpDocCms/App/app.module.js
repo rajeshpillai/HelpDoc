@@ -20,19 +20,7 @@ angular.module("post.module").config(function ($stateProvider, $urlRouterProvide
         .state("posts", {
             url: "/posts/:tag?",
             templateUrl: "index.html",
-            controller: "posts.controller",
-            resolve: {
-                posts: function ($stateParams, PostFactory) {
-                    var tag = $stateParams.tag;
-                    console.log('tag: ', tag);
-                    if (tag === undefined || tag === null || tag.trim() == '') {
-                        return PostFactory.getAll();
-                    }
-                    else {
-                        return PostFactory.getByTag(tag);
-                    }
-                }
-            }
+            controller: "posts.controller"
         })
         .state('posts.show', {
             url: '/:id',
@@ -49,6 +37,8 @@ angular.module("post.module").config(function ($stateProvider, $urlRouterProvide
              templateUrl: "app/post/views/post-editor.html",
              controller: "post-edit.controller"
          });
+}).run(function ($state) {
+    $state.go('posts'); //make a transition to poss state when app starts
 });
 
 angular.module("post.module").config(function ($routeProvider, $locationProvider, $httpProvider) {
