@@ -1,4 +1,4 @@
-﻿angular.module("book.module").factory("AuthService", function ($http, LoginConfig) {
+﻿angular.module("post.module").factory("AuthService", function ($http, LoginConfig) {
     
     return {
         doLogin: function (username, password) {

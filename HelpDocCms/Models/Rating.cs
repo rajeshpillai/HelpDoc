@@ -5,11 +5,11 @@ using System.Web;
 
 namespace BookReview.Models
 {
-    public class BookRating
+    public class Rating
     {
-        public int BookId { get; set; }
+        public int PostId { get; set; }
         public string Username { get; set; }
 
-        public int Rating { get; set; }
+        public int Value { get; set; }
     }
 }

@@ -6,11 +6,11 @@ using System.Web;
 
 namespace BookReview.Models
 {
-    public class Review
+    public class Section
     {
         public int Id { get; set; }
 
-        public int BookId { get; set; }
+        public int PostId { get; set; }
 
         [Required]
         [StringLength(50)]
@@ -21,7 +21,7 @@ namespace BookReview.Models
         
         public string Body { get; set; }
 
-        public virtual Book Book { get; set; }
+        public virtual Post Post { get; set; }
 
         public virtual AppUser User { get; set; }
     }

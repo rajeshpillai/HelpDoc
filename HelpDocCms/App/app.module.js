@@ -1,4 +1,4 @@
-﻿angular.module("book.module",
+﻿angular.module("post.module",
     ['ngRoute',
      'ngSanitize',
      'ngResource',
@@ -8,19 +8,19 @@
 );
 
 
-angular.module("book.module").config(function ($routeProvider, $locationProvider, $httpProvider) {
+angular.module("post.module").config(function ($routeProvider, $locationProvider, $httpProvider) {
     $routeProvider
     .when("/home/:genre?", {
         templateUrl: "index.html",
-        controller: "books.controller",
+        controller: "posts.controller",
         resolve: {
-            books: function ($route, BookFactory) {
+            posts: function ($route, PostFactory) {
                 var genre = $route.current.params.genre;
                 if (genre == undefined) {
-                    return BookFactory.getAll();
+                    return PostFactory.getAll();
                 }
                 else {
-                    return BookFactory.getByGenre(genre);
+                    return PostFactory.getByGenre(genre);
                 }
                 
             }
@@ -30,16 +30,16 @@ angular.module("book.module").config(function ($routeProvider, $locationProvider
         templateUrl: "app/auth/views/login.html",
         controller: "auth.controller",
     })
-    .when("/books/create", {
-        templateUrl: "app/book/views/createbook.html",
-        controller: "book.controller"
+    .when("/posts/create", {
+        templateUrl: "app/post/views/createpost.html",
+        controller: "post.controller"
     })
-    .when("/books/show/:id", {
-        templateUrl: "app/book/views/show.html",
-        controller: "book.controller"
+    .when("/posts/show/:id", {
+        templateUrl: "app/post/views/show.html",
+        controller: "post.controller"
     })
-    .when("/books/review/:id", {
-        templateUrl: "app/book/views/reviews.html",
+    .when("/posts/review/:id", {
+        templateUrl: "app/post/views/reviews.html",
         controller: "reviews.controller"
     });
 
@@ -49,14 +49,14 @@ angular.module("book.module").config(function ($routeProvider, $locationProvider
 
 });
 
-angular.module("book.module").config(function ($routeProvider, $locationProvider) {
+angular.module("post.module").config(function ($routeProvider, $locationProvider) {
     $routeProvider.otherwise({
         redirectTo: '/home'
     });
 });
 
 
-angular.module("book.module").config(function ($provide) {
+angular.module("post.module").config(function ($provide) {
     $provide.decorator("$exceptionHandler",
         ["$delegate",
             function ($delegate) {
@@ -74,7 +74,7 @@ angular.module("book.module").config(function ($provide) {
         );
 });
 
-angular.module("book.module").run(function ($rootScope, $templateCache) {
+angular.module("post.module").run(function ($rootScope, $templateCache) {
     $rootScope.$on('$viewContentLoaded', function () {
         $templateCache.removeAll();
     });

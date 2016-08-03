@@ -21,6 +21,7 @@
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
     <NuGetPackageImportStamp>b15eab9e</NuGetPackageImportStamp>
+    <UseGlobalApplicationHostFile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -128,9 +129,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Api\AuthController.cs" />
-    <Compile Include="Api\BookController.cs" />
-    <Compile Include="Models\BookRating.cs" />
-    <Compile Include="Models\Genre.cs" />
+    <Compile Include="Api\PostController.cs" />
+    <Compile Include="Models\Rating.cs" />
+    <Compile Include="Models\Tag.cs" />
     <Compile Include="Utilities\IEncryptionHelper.cs" />
     <Compile Include="Utilities\SecurityUtil.cs" />
     <Content Include="App\common\directives\notification.directive.html" />
@@ -142,7 +143,7 @@
     <Content Include="App\auth\auth.service.js" />
     <Content Include="App\auth\auth.session.service.js" />
     <Content Include="App\auth\views\login.html" />
-    <Content Include="App\book\book.factory.js" />
+    <Content Include="App\post\post.factory.js" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
@@ -152,31 +153,31 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AppUser.cs" />
-    <Compile Include="Models\Book.cs" />
-    <Compile Include="Models\Review.cs" />
+    <Compile Include="Models\Post.cs" />
+    <Compile Include="Models\Section.cs" />
     <Compile Include="Models\StubData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App\book\book.controller.js" />
-    <Content Include="App\book\books.controller.js" />
-    <Content Include="App\book\booklist.directive.js" />
-    <Content Include="App\book\collapsible.directive.js" />
-    <Content Include="App\book\upvote.directive.js" />
-    <Content Include="App\book\bookThumbnail.directive.js" />
-    <Content Include="App\book\review.service.js" />
-    <Content Include="App\book\views\directives\booklist.html" />
-    <Content Include="App\book\views\directives\bookthumbnail.html" />
-    <Content Include="App\book\views\createbook.html" />
-    <Content Include="App\book\views\directives\upvote.html" />
-    <Content Include="App\book\views\show.html" />
+    <Content Include="App\post\post.controller.js" />
+    <Content Include="App\post\posts.controller.js" />
+    <Content Include="App\post\postlist.directive.js" />
+    <Content Include="App\post\collapsible.directive.js" />
+    <Content Include="App\post\upvote.directive.js" />
+    <Content Include="App\post\postThumbnail.directive.js" />
+    <Content Include="App\post\review.service.js" />
+    <Content Include="App\post\views\directives\postlist.html" />
+    <Content Include="App\post\views\directives\postthumbnail.html" />
+    <Content Include="App\post\views\createpost.html" />
+    <Content Include="App\post\views\directives\upvote.html" />
+    <Content Include="App\post\views\show.html" />
     <Content Include="App\common\directives\datepicker.directive.js" />
     <Content Include="App\common\directives\datekeys.directive.js" />
     <Content Include="App\common\filters\filters.js" />
     <Content Include="App\common\nav.controller.js" />
     <Content Include="App\core\app.value.js" />
-    <Content Include="App\book\reviews.controller.js" />
-    <Content Include="App\book\views\reviews.html" />
+    <Content Include="App\post\reviews.controller.js" />
+    <Content Include="App\post\views\reviews.html" />
     <Content Include="App\core\constants.js" />
     <Content Include="App\rating\rating.service.js" />
     <Content Include="Content\bootstrap.css" />

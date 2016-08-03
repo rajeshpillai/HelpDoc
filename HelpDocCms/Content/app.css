@@ -9,21 +9,21 @@
 	margin-top: 0px;
 }
 
-.book-container {
+.post-container {
 	
 }
 
-.book-thumb {
+.post-thumb {
 	text-align: center;
 	color: black;
 }
 
-.book-thumb h5 {
+.post-thumb h5 {
 	font-weight: bold;
 	margin-top: 0px;
 }
 
-.book-thumb:hover {
+.post-thumb:hover {
 	text-decoration: none;
 	color: grey;
 }
@@ -38,31 +38,31 @@ img.thumbnail {
 	margin-right: 20px;
 }
 
-.bookdetails {
+.postdetails {
 }
 
-.bookdetails .poster {
+.postdetails .poster {
 	float: left;
 	margin-right: 20px;
     max-height:300px;
 }
 
-.bookdetails .book-title {
+.postdetails .post-title {
 	font-family: 'Lobster', cursive;
 	font-size: 35px;
 	margin-top: 0px;
 }
 
-.bookdetails .btn-info {
+.postdetails .btn-info {
 	margin-right: 5px;
 }
 
-.bookdetails .overview {
+.postdetails .overview {
 	font-size: 17px;
 	margin: 15px 5% 15px 0px;
 } 
 
-.bookdetails .return-link {
+.postdetails .return-link {
 	float: right;
 }
 

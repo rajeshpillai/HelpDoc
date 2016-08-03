@@ -1,11 +1,11 @@
 ﻿
 
 
-//angular.module("book.module").config(function ($httpProvider) {
+//angular.module("post.module").config(function ($httpProvider) {
 //	$httpProvider.interceptors.push('AuthInterceptor');
 //})
 
-angular.module("book.module").factory('AuthInterceptor', function ($timeout, $q, $log, $injector,$location, AuthSessionService) {
+angular.module("post.module").factory('AuthInterceptor', function ($timeout, $q, $log, $injector,$location, AuthSessionService) {
 	//var AuthService;
 
 	//$timeout(function () {

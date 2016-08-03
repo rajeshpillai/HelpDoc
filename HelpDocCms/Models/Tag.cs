@@ -5,15 +5,15 @@ using System.Web;
 
 namespace BookReview.Models
 {
-    public class Genre
+    public class Tag
     {
         public string TagName { get; set; }
 
-        public List<Book> Books { get; set; }
-        public Genre(string tagName)
+        public List<Post> Books { get; set; }
+        public Tag(string tagName)
         {
             this.TagName = tagName;
-            Books = new List<Book>();
+            Books = new List<Post>();
         }
     }
 }

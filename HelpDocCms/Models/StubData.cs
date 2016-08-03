@@ -8,21 +8,21 @@ namespace BookReview.Models
 {
     public static class StubData
     {
-        public static List<Book> Books = new List<Book>();
+        public static List<Post> Posts = new List<Post>();
         public static List<AppUser> Users = new List<AppUser>();
-        public static List<Review> Reviews = new List<Review>();
-        public static List<BookRating> Ratings = new List<BookRating>();
+        public static List<Section> Reviews = new List<Section>();
+        public static List<Rating> Ratings = new List<Rating>();
 
         //public static List<string> Genres = new List<string>();
-        public static List<Genre> Genres = new List<Genre>();
+        public static List<Tag> Genres = new List<Tag>();
         static StubData()
         {
-            Genres.Add(new Genre("Fiction"));
-            Genres.Add(new Genre("Programming"));
-            Genres.Add(new Genre("Crime"));
-            Genres.Add(new Genre("Suspense"));
-            Genres.Add(new Genre("Thriller"));
-            Genres.Add(new Genre("Classic"));
+            Genres.Add(new Tag("Fiction"));
+            Genres.Add(new Tag("Programming"));
+            Genres.Add(new Tag("Crime"));
+            Genres.Add(new Tag("Suspense"));
+            Genres.Add(new Tag("Thriller"));
+            Genres.Add(new Tag("Classic"));
 
             SetupData();
 
@@ -64,13 +64,13 @@ namespace BookReview.Models
                     
             for (var i = 1; i <= 20; i++)
             {
-                var book = new Book
+                var post = new Post
                 {
                     Author = "Author " + i.ToString(),
-                    BookName = "Book " + i.ToString(),
-                    BookUrl = "<a target='_blank' href='https://leanpub.com/qlikview-recipes'>Book webpage</a>",
+                    Title = "Book " + i.ToString(),
+                    Url = "<a target='_blank' href='https://leanpub.com/qlikview-recipes'>Book webpage</a>",
                     Id = i,
-                    BookImageUrl = "/uploads/books/" + (i % 2 == 0 ? "1.png" : "2.png"),
+                    ImageUrl = "/uploads/posts/" + (i % 2 == 0 ? "1.png" : "2.png"),
                     PublishedOn = DateTime.Now.AddDays(-i),
                     ReadingTime = rndDuration.Next(1, 12),
                     Description = "Over a good boook "
@@ -82,8 +82,8 @@ namespace BookReview.Models
 
                 for (var g = 0; g < genCount; g++)
                 {
-                    book.Genres.Add(Genres[g]);
-                    //Genres[g].Books.Add(book);
+                    post.Genres.Add(Genres[g]);
+                    //Genres[g].Books.Add(post);
                 }
 
                 if (i % 2 == 0) reviewCount = 20;  // random review count
@@ -91,33 +91,33 @@ namespace BookReview.Models
                 for (var j = 1; j <= reviewCount; j++)
                 {
                     var u = Users[j % 5];
-                    var review = new Review
+                    var review = new Section
                     {
-                        Title = "Review of " + book.BookName,
-                        Body = "An excellent book, " + book.BookName ,
-                        BookId = book.Id,
+                        Title = "Review of " + post.Title,
+                        Body = "An excellent post, " + post.Title ,
+                        PostId = post.Id,
                         Id = i*j,
                         Username = u.Username,
                         User = u
                     };
 
                     Random rnd = new Random();
-                    var rating = new BookRating
+                    var rating = new Rating
                     {
-                        BookId = book.Id,
+                        PostId = post.Id,
                         Username = u.Username,
-                        Rating =  rnd.Next(0,5)
+                        Value =  rnd.Next(0,5)
                     };
 
-                    book.Reviews.Add(review);
-                    book.Ratings.Add(rating);
+                    post.Reviews.Add(review);
+                    post.Ratings.Add(rating);
 
                     Ratings.Add(rating);
                     Reviews.Add(review);
 
                 }
 
-                Books.Add(book);
+                Posts.Add(post);
             }
         }
     }

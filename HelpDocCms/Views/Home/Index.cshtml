@@ -1,12 +1,12 @@
 ﻿@{
-    ViewBag.Title = "Book Review App";
+    ViewBag.Title = "HelpDoc CMS";
 }
 
-<div ng-app="book.module">
+<div ng-app="post.module">
     <nav class="navbar navbar-default" ng-controller="nav.controller">
         <ul class="nav navbar-nav">
             <li class="active"><a href="#" ng-click="loadHomePage()">Home</a></li>
-            <li><a href="#" ng-click="loadAddView()">ADD BOOK</a></li>
+            <li><a href="#" ng-click="loadAddView()">NEW POST</a></li>
             <li ng-controller="auth.controller" class="pull-right">
                 <a href="#" ng-click="logout()"
                    ng-show="showLogout">Logout < {{username}}</a>

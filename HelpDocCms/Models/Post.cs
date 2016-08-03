@@ -6,13 +6,13 @@ using System.Web;
 
 namespace BookReview.Models
 {
-    public class Book
+    public class Post
     {
         public int Id { get; set; }
 
         [Required]
         [StringLength(50)]
-        public string BookName { get; set; }
+        public string Title { get; set; }
 
         public string Description { get; set; }
 
@@ -20,28 +20,26 @@ namespace BookReview.Models
         public string Author { get; set; }
 
         [StringLength(255)]
-        public string BookUrl { get; set; }
+        public string Url { get; set; }
 
-        public string BookImageUrl { get; set; }
+        public string ImageUrl { get; set; }
 
         public double ReadingTime { get; set; }
-
-        //public string Genre { get; set; }
 
         public DateTime PublishedOn { get; set; }
 
         public int NormalizedRating { get; set; }
         public int Rating { get; set; }
 
-        public List<Review> Reviews { get; set; }
-        public List<BookRating> Ratings { get; set; }
+        public List<Section> Reviews { get; set; }
+        public List<Rating> Ratings { get; set; }
 
-        public List<Genre> Genres { get; set; }
-        public Book()
+        public List<Tag> Genres { get; set; }
+        public Post()
         {
-            Reviews = new List<Review>();
-            Ratings = new List<BookRating>();
-            Genres = new List<Genre>();
+            Reviews = new List<Section>();
+            Ratings = new List<Rating>();
+            Genres = new List<Tag>();
         }
 
     }

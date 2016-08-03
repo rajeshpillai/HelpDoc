@@ -1,4 +1,4 @@
-﻿angular.module("book.module").factory("AuthSessionService", function ($window) {
+﻿angular.module("post.module").factory("AuthSessionService", function ($window) {
 
     var setToken = function (token) {
         $window.localStorage.setItem('token', token);

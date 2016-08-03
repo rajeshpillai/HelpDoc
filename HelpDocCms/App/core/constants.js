@@ -3,6 +3,6 @@
     'use strict';
 
     angular
-        .module('book.module')
+        .module('post.module')
         .constant('$', jQuery)
 })();

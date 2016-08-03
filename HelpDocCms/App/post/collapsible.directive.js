@@ -1,7 +1,7 @@
 ﻿'use strict';
 
 /* todo: directive with transculusion */
-angular.module("book.module").directive("collapsible", function () {
+angular.module("post.module").directive("collapsible", function () {
     return {
         restrict: "E",
         replace: true,

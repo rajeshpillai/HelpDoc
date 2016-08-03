@@ -1,10 +1,10 @@
-﻿angular.module("book.module").factory("BookConfig", function ($http) {
+﻿angular.module("post.module").factory("PostConfig", function ($http) {
     return {
-        apiUrl: 'api/book'
+        apiUrl: 'api/post'
     };
 });
 
-angular.module("book.module").factory("LoginConfig", function () {
+angular.module("post.module").factory("LoginConfig", function () {
     return {
         apiUrl: 'api/auth'
     };

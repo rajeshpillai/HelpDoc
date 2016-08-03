@@ -1,6 +1,6 @@
-﻿angular.module("book.module").controller("nav.controller", function ($scope, $location) {
+﻿angular.module("post.module").controller("nav.controller", function ($scope, $location) {
     $scope.loadAddView = function () {
-        $location.url("/books/create");
+        $location.url("/posts/create");
     };
 
     $scope.loadHomePage = function () {

@@ -1,10 +1,10 @@
 ﻿'use strict';
 
 /* todo: directive with isolate scope */
-angular.module("book.module").directive("upvote", function () {
+angular.module("post.module").directive("upvote", function () {
     return {
         restrict: "E",
-        templateUrl: "app/book/views/directives/upvote.html",
+        templateUrl: "app/post/views/directives/upvote.html",
         scope: {
             upvote: "&",
             downvote: "&",

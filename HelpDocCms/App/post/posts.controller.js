@@ -1,10 +1,9 @@
-﻿angular.module("book.module").controller('books.controller',
-    function ($scope, $anchorScroll, $location, $routeParams, $cookies, $locale, books, BookFactory, AuthSessionService, RatingService) {
+﻿angular.module("post.module").controller('posts.controller',
+    function ($scope, $anchorScroll, $location, $routeParams, $cookies, $locale, posts, PostFactory, AuthSessionService, RatingService) {
     /*
-     * NOTES:  books is injected from 'route resolve'
+     * NOTES:  posts is injected from 'route resolve'
      */
-    $scope.message = "Welcome to the Book Review app!";
-   // $scope.myDateFormat = $locale.DATETIME_FORMATS.fullDate;
+    $scope.message = "Welcome to the HelpDoc";
 
     $scope.orderBy = 'publishedOn';
     $scope.reverse = true;
@@ -27,39 +26,34 @@
         $scope.sortOn = $cookies.get('mySort');
     }
 
-    // get all books from service: replaced this in route resolve
-    //BookFactory.getAll().success(function (data) {
-    //    $scope.books = data;
-    //});
+    $scope.posts = posts.data;
 
-    $scope.books = books.data;
-
-    BookFactory.genres().success(function (data) {
+    PostFactory.genres().success(function (data) {
         $scope.genres = data;
     });
 
    // filter method
-    $scope.filterByBookOrAuthor = function (book) {
+    $scope.filterByBookOrAuthor = function (post) {
         if ($.trim($scope.search) == '') {
             return true;
         }
-        return (book.bookName.toLowerCase().startsWith($scope.search.toLowerCase()))
-            || (book.author.toLowerCase().startsWith($scope.search.toLowerCase()));
+        return (post.postName.toLowerCase().startsWith($scope.search.toLowerCase()))
+            || (post.author.toLowerCase().startsWith($scope.search.toLowerCase()));
     }
 
     // custom sort function
-    $scope.sortFn = function (book) {
+    $scope.sortFn = function (post) {
         if ($scope.sortOn == "publishedOn") {
             $scope.orderBy = 'publishedOn';
             return "-publishedOn";
         } else if ($scope.sortOn == "reviewCount") {
             $scope.orderBy = 'reviews.length';
-            return -book.reviews.length;
+            return -post.reviews.length;
         }
     }
     
     // enable add form
-    $scope.toggleAdd = function (book) {
+    $scope.toggleAdd = function (post) {
         if (AuthSessionService.isTokenExist()) {
             $scope.showAdd = !$scope.showAdd;
         }
@@ -87,9 +81,9 @@
         $cookies.put('mySort', $scope.sortOn);
     }
 
-    // show book
-    $scope.showBook = function (book) {
-        $scope.currentBook = book;
+    // show post
+    $scope.showPost = function (post) {
+        $scope.currentPost = post;
     };
 
     $scope.closeAlert = function (index) {
@@ -99,25 +93,21 @@
 
     // voting
     // todo: get user name from where
-    $scope.upVoteBook = function (book) {
-        book.rating++;
-        RatingService.upVote(book.id, "admin");
+    $scope.upVote = function (post) {
+        post.rating++;
+        RatingService.upVote(post.id, "admin");
     }
 
-    $scope.downVoteBook = function (book) {
-        book.rating--;
-        RatingService.downVote(book.id, "admin");
+    $scope.downVote = function (post) {
+        post.rating--;
+        RatingService.downVote(post.id, "admin");
     }
 
     $scope.gotoAnchor = function (x) {
         var newHash = 'anchor' + x;
         if ($location.hash() !== newHash) {
-            // set the $location.hash to `newHash` and
-            // $anchorScroll will automatically scroll to it
             $location.hash('anchor' + x);
         } else {
-            // call $anchorScroll() explicitly,
-            // since $location.hash hasn't changed
             $anchorScroll();
         }
     };

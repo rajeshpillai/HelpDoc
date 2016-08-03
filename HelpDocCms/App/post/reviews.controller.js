@@ -1,16 +1,16 @@
-﻿angular.module("book.module").controller('reviews.controller',
-   function ($scope, $route, $routeParams,$location, BookFactory, ReviewService, AuthSessionService) {
+﻿angular.module("post.module").controller('reviews.controller',
+   function ($scope, $route, $routeParams,$location, PostFactory, ReviewService, AuthSessionService) {
     $scope.review = {
         title: "",
         body: "",
-        bookId: ""
+        postId: ""
     };
 
     $scope.message = "Review details";
 
-    $scope.review.bookId = $routeParams.id;
+    $scope.review.postId = $routeParams.id;
 
-    BookFactory.getReviewsById($scope.review.bookId).success(function (data) {
+    PostFactory.getReviewsById($scope.review.postId).success(function (data) {
         $scope.reviews = data;
     });
 
@@ -26,7 +26,7 @@
     };
 
     $scope.addReview = function () {
-        $scope.review.bookId = $routeParams.id;
+        $scope.review.postId = $routeParams.id;
         ReviewService.save($scope.review, function (data) {
             $scope.review.id = data.id;
             $scope.review.username = data.username;
@@ -43,7 +43,7 @@
         $scope.review = {
             title: "",
             body: "",
-            bookId: "",
+            postId: "",
             id: ""
         };
     }

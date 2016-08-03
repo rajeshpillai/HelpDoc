@@ -1,7 +1,7 @@
 ﻿'use strict';
 
 /* todo: directive with events */
-angular.module("book.module").directive('dateKeys', function () {
+angular.module("post.module").directive('dateKeys', function () {
     return {
         restrict: 'A',
         link: function (scope, element, attrs, controller) {

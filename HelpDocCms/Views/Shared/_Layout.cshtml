@@ -36,9 +36,6 @@
     <script src="~/App/auth/auth.interceptor.js"></script>
     <script src="~/App/common/filters/filters.js"></script>
     <script src="~/App/common/nav.controller.js"></script>
-    <script src="~/App/book/bookThumbnail.directive.js"></script>
-    <script src="~/App/book/booklist.directive.js"></script>
-    <script src="~/App/book/upvote.directive.js"></script>
     <script src="~/App/common/directives/datepicker.directive.js"></script>
     <script src="~/App/common/directives/notification.directive.js"></script>
     <script src="~/App/auth/auth.controller.js"></script>
@@ -46,18 +43,22 @@
 
     <script src="~/App/rating/rating.service.js"></script>
     <script src="~/App/common/directives/datekeys.directive.js"></script>
-    <script src="~/App/book/collapsible.directive.js"></script>
 
-    <script src="~/App/book/books.controller.js"></script>
-    <script src="~/App/book/book.controller.js"></script>
-    <script src="~/App/book/book.factory.js"></script>
     <script src="~/App/core/app.value.js"></script>
-    <script src="~/App/book/reviews.controller.js"></script>
-    <script src="~/App/book/review.service.js"></script>
+
+    <script src="~/App/post/postThumbnail.directive.js"></script>
+    <script src="~/App/post/postlist.directive.js"></script>
+    <script src="~/App/post/upvote.directive.js"></script>
+    <script src="~/App/post/collapsible.directive.js"></script>
+    <script src="~/App/post/posts.controller.js"></script>
+    <script src="~/App/post/post.controller.js"></script>
+    <script src="~/App/post/post.factory.js"></script>
+    <script src="~/App/post/reviews.controller.js"></script>
+    <script src="~/App/post/review.service.js"></script>
 
 
 
-    <meta name="description" content="Book review" />
+    <meta name="description" content="Posts review" />
 
     <style>
         body {
@@ -74,7 +75,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("BOOK REVIEWS", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("HELPDOC", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
@@ -92,7 +93,7 @@
 
 
         <footer>
-            <p>&copy; @DateTime.Now.Year - Book Review app (for AngularJS Training)</p>
+            <p>&copy; @DateTime.Now.Year - TEKACADEMY LABS</p>
         </footer>
     </div>
     @RenderSection("scripts", required: false)

@@ -1,5 +1,5 @@
 ﻿'use strict';
-angular.module("book.module").filter('durations', function () {
+angular.module("post.module").filter('durations', function () {
     return function (duration) {
         switch (duration) {
             case 1:

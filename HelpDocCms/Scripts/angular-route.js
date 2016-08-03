@@ -363,14 +363,14 @@ function $RouteProvider() {
      *     </div>
      *   </file>
      *
-     *   <file name="book.html">
+     *   <file name="post.html">
      *     controller: {{name}}<br />
-     *     Book Id: {{params.bookId}}<br />
+     *     Book Id: {{params.postId}}<br />
      *   </file>
      *
      *   <file name="chapter.html">
      *     controller: {{name}}<br />
-     *     Book Id: {{params.bookId}}<br />
+     *     Book Id: {{params.postId}}<br />
      *     Chapter Id: {{params.chapterId}}
      *   </file>
      *
@@ -395,8 +395,8 @@ function $RouteProvider() {
      *
      *     .config(function($routeProvider, $locationProvider) {
      *       $routeProvider
-     *        .when('/Book/:bookId', {
-     *         templateUrl: 'book.html',
+     *        .when('/Book/:postId', {
+     *         templateUrl: 'post.html',
      *         controller: 'BookController',
      *         resolve: {
      *           // I will cause a 1 second delay
@@ -407,7 +407,7 @@ function $RouteProvider() {
      *           }
      *         }
      *       })
-     *       .when('/Book/:bookId/ch/:chapterId', {
+     *       .when('/Book/:postId/ch/:chapterId', {
      *         templateUrl: 'chapter.html',
      *         controller: 'ChapterController'
      *       });
@@ -839,17 +839,17 @@ ngRouteModule.directive('ngView', ngViewFillContentFactory);
         </div>
       </file>
 
-      <file name="book.html">
+      <file name="post.html">
         <div>
-          controller: {{book.name}}<br />
-          Book Id: {{book.params.bookId}}<br />
+          controller: {{post.name}}<br />
+          Book Id: {{post.params.postId}}<br />
         </div>
       </file>
 
       <file name="chapter.html">
         <div>
           controller: {{chapter.name}}<br />
-          Book Id: {{chapter.params.bookId}}<br />
+          Book Id: {{chapter.params.postId}}<br />
           Chapter Id: {{chapter.params.chapterId}}
         </div>
       </file>
@@ -899,12 +899,12 @@ ngRouteModule.directive('ngView', ngViewFillContentFactory);
           .config(['$routeProvider', '$locationProvider',
             function($routeProvider, $locationProvider) {
               $routeProvider
-                .when('/Book/:bookId', {
-                  templateUrl: 'book.html',
+                .when('/Book/:postId', {
+                  templateUrl: 'post.html',
                   controller: 'BookCtrl',
-                  controllerAs: 'book'
+                  controllerAs: 'post'
                 })
-                .when('/Book/:bookId/ch/:chapterId', {
+                .when('/Book/:postId/ch/:chapterId', {
                   templateUrl: 'chapter.html',
                   controller: 'ChapterCtrl',
                   controllerAs: 'chapter'

@@ -1,6 +1,6 @@
 ﻿'use strict';
 
-angular.module("book.module").directive('notification', function ($timeout) {
+angular.module("post.module").directive('notification', function ($timeout) {
     return {
         restrict: 'EA',
         replace: true, // Replace with the template below

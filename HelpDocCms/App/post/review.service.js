@@ -1,5 +1,5 @@
-﻿angular.module("book.module").factory("ReviewService", function ($resource, BookConfig) {
-    //var r = $resource('/api/book');
+﻿angular.module("post.module").factory("ReviewService", function ($resource, PostConfig) {
+    //var r = $resource('/api/post');
     /*
      * { 'get':    {method:'GET'},
   'save':   {method:'POST'},
@@ -10,8 +10,8 @@
      */
   
 
-    var resource = $resource('/api/book/review/:id',
-            { username: 'admin', bookId: '@id' });
+    var resource = $resource('/api/post/review/:id',
+            { username: 'admin', postId: '@id' });
     return {
         get: function () {
             return resource.get({id: '@id'});

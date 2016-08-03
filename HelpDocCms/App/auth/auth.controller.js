@@ -1,5 +1,5 @@
-﻿angular.module("book.module").controller('auth.controller', function ($scope, $rootScope, $cookies, $location, AuthService, AuthSessionService) {
-    $scope.message = "Welcome to the Book Review app!";
+﻿angular.module("post.module").controller('auth.controller', function ($scope, $rootScope, $cookies, $location, AuthService, AuthSessionService) {
+    $scope.message = "Welcome to the HdlpDoc CMS app!";
 
     init();
 
