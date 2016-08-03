@@ -20,11 +20,26 @@ namespace HelpDoc.Data
 
         public BiggyList<AppUser> Users = new BiggyList<AppUser>(DB_PATH);
 
-        public bool Save(Post post)
+        public bool Create(Post post)
         {
             Posts.Add(post);
             Posts.Save();
             return true;
+        }
+
+        public bool Update(Post post)
+        {
+            var find = Posts.First<Post>(p => p.Id == post.Id);
+            Posts.Remove(find);
+            Posts.Add(post);
+            Posts.Save();
+            return true;
+        }
+
+        public void Delete(Post post)
+        {
+            Posts.Remove(post);
+            Posts.Save();
         }
 
         public List<Post> All ()

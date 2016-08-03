@@ -1,41 +1,15 @@
-﻿<div class="row" style="margin-bottom:10px;"
-     id="anchor{{post.id}}"
-     data-ng-repeat="post in posts | orderBy:sortFn  | filter:search |filter:tagFilter track by $index">
-
-    <!--voting-->
-    <div class="col-md-1">
-        <upvote upvote="upVote(post)" downvote="downVote(post)" count="post.rating"></upvote>
+﻿<div class="row">
+    <div class="col-md-3">
+        <ul class="list-group">
+            <li class="list-group-item" ng-repeat="post in posts | orderBy:sortOrder | filter:search"
+                ng-class="{active: isActive(post.url)}">
+                <a ui-sref="posts.show({id: post.id})">{{post.title}}</a>
+                <a ui-sref="posts.edit({id: post.id})">edit</a>
+                <a href="#" ng-click="delete(post)">delete</a>
+            </li>
+        </ul>
     </div>
-    <div class="col-sm-12 col-md-10">
-        <div class="thumbnail" style="padding:10px;">
-            <div class="row">
-                <div class="col-md-6 caption" style="margin-left:10px;">
-                    <!--<h4>{{post.title}} </h4>-->
-                    <collapsible title="{{post.title}}">
-                        <span>published on  {{post.publishedOn | date: myFormat}}</span>
-                        <p>{{post.createdBy}}</p> <span>sections: {{post.sections.length}}</span>
-
-                        <br />
-                        Tag:
-                        <a ng-repeat="tag in post.tags" class="tag label label-info"
-                           ng-href="/home/{{tag.tagName}}">{{tag.tagName}}
-                        </a>
-
-                        <br />
-                        <p>Reading time: <span class="label label-success">{{post.readingTime | durations }} </span>  </p>
-                        <p ng-bind-html="post.postUrl"></p>
-                        <p>
-                            <a class="btn btn-primary" data-ng-href="/posts/show/{{post.id}}">VIEW DETAILS</a>
-                            <a class="btn btn-default" data-ng-href="/posts/section/{{post.id}}">SECTIONS</a>
-                        </p>
-                    </collapsible>
-                </div>
-                <div class="col-md-4 pull-right">
-                    <img style="max-height:200px" ng-src="{{post.postImageUrl}}" />
-                </div>
-
-            </div>
-        </div>
+    <div class="col-md-9" ui-view>
+      
     </div>
-
 </div>

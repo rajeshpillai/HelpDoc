@@ -1,6 +1,7 @@
-﻿angular.module("post.module").controller("nav.controller", function ($scope, $location) {
+﻿angular.module("post.module").controller("nav.controller", function ($scope, $location, $state) {
     $scope.loadAddView = function () {
-        $location.url("/posts/create");
+        //$location.url("/posts/create");
+        $state.go('posts.create');
     };
 
     $scope.loadHomePage = function () {

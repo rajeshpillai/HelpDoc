@@ -8,11 +8,17 @@ angular.module("post.module").factory("PostFactory", function ($http, PostConfig
         getById: function (id) {
             return $http.get(PostConfig.apiUrl + '/byid/' + id);
         },
+        remove: function (id) {
+            return $http.post(PostConfig.apiUrl + '/remove/' + id);
+        },
         getSectionsById: function (id) {
             return $http.get(PostConfig.apiUrl + '/sectionsbypost/' + id);
         },
         update: function (post) {
             return $http.post(PostConfig.apiUrl + "/update/", post);
+        },
+        create: function (post) {
+            return $http.post(PostConfig.apiUrl + "/create/", post);
         },
         tags: function () {
             return $http.get(PostConfig.apiUrl + "/tags");

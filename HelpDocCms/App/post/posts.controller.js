@@ -1,16 +1,15 @@
 ﻿angular.module("post.module").controller('posts.controller',
-    function ($scope, $anchorScroll, $location, $routeParams, $cookies, $locale, posts, PostFactory, AuthSessionService, RatingService) {
+    function ($scope, $anchorScroll, $location, $routeParams, $stateParams, $cookies, $locale, posts, PostFactory, AuthSessionService, RatingService) {
     /*
      * NOTES:  posts is injected from 'route resolve'
      */
     $scope.message = "Welcome to the HelpDoc";
-
     $scope.orderBy = 'publishedOn';
     $scope.reverse = true;
     $scope.showNotification = false;
 
 
-    $scope.filterTag = $routeParams.tag;
+    $scope.filterTag = $stateParams.tag || $routeParams.tag;
 
     $scope.notifySuccess = function (msg) {
         $scope.notificationMessage = msg;
@@ -26,6 +25,7 @@
 
     $scope.posts = posts.data;
 
+    
     PostFactory.tags().success(function (data) {
         $scope.tags = data;
     });
@@ -88,25 +88,10 @@
         $scope.showAlert = false;
     };
 
-
-    // voting
-    // todo: get user name from where
-    $scope.upVote = function (post) {
-        post.rating++;
-        RatingService.upVote(post.id, "admin");
-    }
-
-    $scope.downVote = function (post) {
-        post.rating--;
-        RatingService.downVote(post.id, "admin");
-    }
-
-    $scope.gotoAnchor = function (x) {
-        var newHash = 'anchor' + x;
-        if ($location.hash() !== newHash) {
-            $location.hash('anchor' + x);
-        } else {
-            $anchorScroll();
+    $scope.delete = function (post) {
+         var result = confirm("You are about to delete document " + post.title + ".  Are you sure?");
+        if (result === true) {
+            PostFactory.remove(post.id);
         }
-    };
+    }
 });

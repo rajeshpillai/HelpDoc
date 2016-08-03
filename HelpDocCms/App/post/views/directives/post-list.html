@@ -21,8 +21,14 @@
             <td><span>{{post.sections.length}}</span></td>
             <td>{{post.publishedOn | date:mediumDate}}</td>
             <td><span ng-bind-html="post.postUrl"></span></td>
-            <td><a data-ng-href="/posts/show/{{post.id}}">VIEW DETAILS</a></td>
+            <td><a ui-sref="posts.show({id: post.id})">SHOW</a>
+            </td>
             <td><a data-ng-href="/posts/section/{{post.id}}">REVIEWS</a></td>
+            <td><a ui-sref="posts.edit({id: post.id})">edit</a></td>
         </tr>
     </tbody>
 </table>
+
+<div class="col-md-9" ui-view>
+
+</div>

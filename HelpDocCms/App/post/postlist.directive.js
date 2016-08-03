@@ -2,11 +2,7 @@
     return {
         restrict: "E",
         replace: true,
-        scope:{
-            posts: "=posts",
-            tagFilter: "=",
-            search: "="
-        },
+        scope: true,
         templateUrl: "app/post/views/directives/post-list.html"
     };
 });

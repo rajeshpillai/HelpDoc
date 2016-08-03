@@ -13,8 +13,6 @@ namespace HelpDoc.Api
     {
         HelpDb db = new HelpDb();
 
-        
-
         [ActionName("allposts")]
         public IEnumerable<Post> Get()
         {
@@ -34,7 +32,6 @@ namespace HelpDoc.Api
         public IEnumerable<Post> ByTag(string id)
         {
             var tag = db.Tags.Where(g => g.TagName.ToLower() == id.ToLower()).FirstOrDefault();
-
             var posts = db.Posts.Where(b => b.Tags.Contains(tag));
 
             return posts;
@@ -56,19 +53,33 @@ namespace HelpDoc.Api
             return post.Sections;
         }
 
-        // POST: api/Book/update
+        // POST: api/Book/create
+
+        [ActionName("create")]
+        public int Create([FromBody]Post post)
+        {
+            if (db.Posts.Count == 0)
+            {
+                post.Id = 1;
+                post.SortOrder = 1;
+            }
+            else
+            {
+                post.Id = db.Posts.Max(p => p.Id) + 1;
+                post.SortOrder = db.Posts.Max(p => p.SortOrder) + 1;
+
+            }
+            post.CreatedBy = "admin";
+            db.Posts.Add(post);
+            db.Update(post);
+            return post.Id;
+        }
 
         [ActionName("update")]
-        public int Post([FromBody]Post post)
-        {
-            post.Id = db.Posts.Count() + 1;
+        public int Update([FromBody]Post post)
+        {   
 
-            post.SortOrder = db.Posts.Max(p => p.SortOrder) + 1;
-
-            db.Posts.Add(post);
-            
-            db.Save(post);
-
+            db.Update(post);
             return post.Id;
         }
 
@@ -117,11 +128,12 @@ namespace HelpDoc.Api
         {
         }
 
-        // DELETE: api/Book/5
+        [ActionName("remove")]
+        [HttpPost]
         public void Delete(int id)
         {
             var post = db.Posts.Where(b => b.Id == id).FirstOrDefault();
-            db.Posts.Remove(post);
+            db.Delete(post);
         }
     }
 }

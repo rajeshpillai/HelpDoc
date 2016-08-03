@@ -138,8 +138,10 @@
     <Compile Include="Utilities\SecurityUtil.cs" />
     <Content Include="App\common\directives\notification.directive.html" />
     <Content Include="App\common\directives\notification.directive.js" />
+    <Content Include="App\post\post-edit.controller.js" />
     <Content Include="App\post\postdocument.directive.js" />
     <Content Include="App\post\views\directives\post-document.html" />
+    <Content Include="App\post\views\show-post.html" />
     <Content Include="Content\app.css" />
     <Content Include="App\app.module.js" />
     <Content Include="App\auth\auth.controller.js" />
@@ -167,13 +169,9 @@
     <Content Include="App\post\posts.controller.js" />
     <Content Include="App\post\postlist.directive.js" />
     <Content Include="App\post\collapsible.directive.js" />
-    <Content Include="App\post\upvote.directive.js" />
-    <Content Include="App\post\postThumbnail.directive.js" />
     <Content Include="App\post\section.service.js" />
     <Content Include="App\post\views\directives\post-list.html" />
-    <Content Include="App\post\views\directives\post-thumbnail.html" />
-    <Content Include="App\post\views\createpost.html" />
-    <Content Include="App\post\views\directives\upvote.html" />
+    <Content Include="App\post\views\post-editor.html" />
     <Content Include="App\post\views\show.html" />
     <Content Include="App\common\directives\datepicker.directive.js" />
     <Content Include="App\common\directives\datekeys.directive.js" />
@@ -238,6 +236,8 @@
     <Content Include="Scripts\angular-route.min.js" />
     <Content Include="Scripts\angular-sanitize.js" />
     <Content Include="Scripts\angular-sanitize.min.js" />
+    <Content Include="Scripts\angular-ui-router.js" />
+    <Content Include="Scripts\angular-ui-router.min.js" />
     <Content Include="Scripts\angular-ui\ui-bootstrap-tpls.js" />
     <Content Include="Scripts\angular-ui\ui-bootstrap-tpls.min.js" />
     <Content Include="Scripts\angular-ui\ui-bootstrap.js" />

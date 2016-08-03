@@ -26,71 +26,25 @@
 </div>
 
 <div class="well">
-    <h4>Showing posts by {{filterTag}}</h4>
+    <h4>Help Documents {{filterTag}}</h4>
     <div>
         <div class="layout" style="float:right">
             <div>
                 <span class="label label-danger">debug:</span>
                 <input type="checkbox" class="float:right" ng-model="debug" />
             </div>
-            <form name="layoutForm" style="display:inline-block;float:right;clear:both">
-                <span class="label label-info">layout:</span>&raquo;
-                
-                <label>
-                    <input type="radio" ng-model="layout" value="layout-document" ng-click="layoutChange()">
-                    document
-                </label>
-
-                <label>
-                    <input type="radio" ng-model="layout" value="layout-grid" ng-click="layoutChange()">
-                    grid
-                </label>
-                <label>
-                    <input type="radio" ng-model="layout" value="layout-table"
-                           ng-click="layoutChange()">
-                    table
-                </label>
-            </form>
         </div>
     </div>
 
     <br />
 
-    <!--Search filters-->
-    <div>
-        Search:
-        <input type="text" class="float:left" style="width:200px" ng-model="search" placeholder="search" />
-    </div>
     <!-- main content-->
     <div style="margin-top:50px;">
         <div class="row" style="margin-bottom:10px;">
-            <div class="col-sm-12 col-md-9" ng-if="layout == 'layout-grid'">
-                <post-thumbnail posts="posts" tag-filter="tagFilter" search="search"></post-thumbnail>
-            </div>
-            <div class="col-sm-12 col-md-9" ng-if="layout == 'layout-table'">
-                <post-list posts="posts" tag-filter="tagFilter" search="search"></post-list>
-            </div>
-            <div class="col-sm-12 col-md-9" ng-if="layout == 'layout-document'">
+            <div class="col-sm-12 col-md-9">
                 <post-document posts="posts" tag-filter="tagFilter" search="search"></post-document>
             </div>
-
-
-            <!--- tags-->
-            <div class="col-sm-2">
-                <div class="section-title tag-title">by tags</div>
-                <div class="list-group">
-                    <a href="#" class="list-group-item">
-                        <span class="badge">{{post.readingTime}}</span>
-                        All
-                    </a>
-                    <a href="/home/{{tag.tagName}}" ng-class="{active: tag.tagName==filterTag}" class="list-group-item" ng-repeat="tag in tags">
-                        <span class="badge">{{tag.length}}</span>
-                        {{tag.tagName}}
-                    </a>
-                </div>
-            </div>
         </div>
-
         
     </div>
 
