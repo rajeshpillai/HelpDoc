@@ -26,7 +26,7 @@
 </div>
 
 <div class="well">
-    <h4>Showing posts by {{filterGenre}}</h4>
+    <h4>Showing posts by {{filterTag}}</h4>
     <div>
         <div class="layout" style="float:right">
             <div>
@@ -34,7 +34,14 @@
                 <input type="checkbox" class="float:right" ng-model="debug" />
             </div>
             <form name="layoutForm" style="display:inline-block;float:right;clear:both">
-                <span class="label label-info">layout:</span>&raquo;<label>
+                <span class="label label-info">layout:</span>&raquo;
+                
+                <label>
+                    <input type="radio" ng-model="layout" value="layout-document" ng-click="layoutChange()">
+                    document
+                </label>
+
+                <label>
                     <input type="radio" ng-model="layout" value="layout-grid" ng-click="layoutChange()">
                     grid
                 </label>
@@ -58,23 +65,27 @@
     <div style="margin-top:50px;">
         <div class="row" style="margin-bottom:10px;">
             <div class="col-sm-12 col-md-9" ng-if="layout == 'layout-grid'">
-                <post-thumbnail posts="posts" genre-filter="genreFilter" search="search"></post-thumbnail>
+                <post-thumbnail posts="posts" tag-filter="tagFilter" search="search"></post-thumbnail>
             </div>
             <div class="col-sm-12 col-md-9" ng-if="layout == 'layout-table'">
-                <post-list posts="posts" genre-filter="genreFilter" search="search"></post-list>
+                <post-list posts="posts" tag-filter="tagFilter" search="search"></post-list>
+            </div>
+            <div class="col-sm-12 col-md-9" ng-if="layout == 'layout-document'">
+                <post-document posts="posts" tag-filter="tagFilter" search="search"></post-document>
             </div>
 
-            <!--- genres-->
+
+            <!--- tags-->
             <div class="col-sm-2">
-                <div class="section-title genre-title">by genre</div>
+                <div class="section-title tag-title">by tags</div>
                 <div class="list-group">
                     <a href="#" class="list-group-item">
                         <span class="badge">{{post.readingTime}}</span>
                         All
                     </a>
-                    <a href="/home/{{genre.tagName}}" ng-class="{active: genre.tagName==filterGenre}" class="list-group-item" ng-repeat="genre in genres">
-                        <span class="badge">{{genre.length}}</span>
-                        {{genre.tagName}}
+                    <a href="/home/{{tag.tagName}}" ng-class="{active: tag.tagName==filterTag}" class="list-group-item" ng-repeat="tag in tags">
+                        <span class="badge">{{tag.length}}</span>
+                        {{tag.tagName}}
                     </a>
                 </div>
             </div>

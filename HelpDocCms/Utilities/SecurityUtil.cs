@@ -5,7 +5,7 @@ using System.Web;
 using System.Security.Cryptography;
 using System.Text;
 
-namespace BookReview.Utilities
+namespace HelpDoc.Utilities
 {
     public class EncryptionHelper : IEncryptionHelper
     {

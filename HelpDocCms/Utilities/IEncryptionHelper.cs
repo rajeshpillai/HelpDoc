@@ -1,5 +1,5 @@
 ﻿using System;
-namespace BookReview.Utilities
+namespace HelpDoc.Utilities
 {
     public interface IEncryptionHelper
     {

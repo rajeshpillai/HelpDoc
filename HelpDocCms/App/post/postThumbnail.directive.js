@@ -4,9 +4,9 @@
         replace: true,
         scope: {
             posts: "=posts",
-            genreFilter: "=",
+            tagFilter: "=",
             search: "="
         },
-        templateUrl: "app/post/views/directives/postthumbnail.html"
+        templateUrl: "app/post/views/directives/post-thumbnail.html"
     };
 });

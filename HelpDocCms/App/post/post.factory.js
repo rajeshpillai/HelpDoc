@@ -8,17 +8,17 @@ angular.module("post.module").factory("PostFactory", function ($http, PostConfig
         getById: function (id) {
             return $http.get(PostConfig.apiUrl + '/byid/' + id);
         },
-        getReviewsById: function (id) {
-            return $http.get(PostConfig.apiUrl + '/reviewsbypost/' + id);
+        getSectionsById: function (id) {
+            return $http.get(PostConfig.apiUrl + '/sectionsbypost/' + id);
         },
         update: function (post) {
             return $http.post(PostConfig.apiUrl + "/update/", post);
         },
-        genres: function () {
-            return $http.get(PostConfig.apiUrl + "/genres");
+        tags: function () {
+            return $http.get(PostConfig.apiUrl + "/tags");
         },
-        getByGenre: function (genre) {
-            return $http.get(PostConfig.apiUrl + "/bygenre/" + genre);
+        getByTag: function (tag) {
+            return $http.get(PostConfig.apiUrl + "/bytag/" + tag);
         }
     }
 });

@@ -10,14 +10,12 @@
     $scope.showNotification = false;
 
 
-    $scope.filterGenre = $routeParams.genre;
+    $scope.filterTag = $routeParams.tag;
 
     $scope.notifySuccess = function (msg) {
         $scope.notificationMessage = msg;
         $scope.showNotification = true;
     };
-
-
 
     init();
 
@@ -28,8 +26,8 @@
 
     $scope.posts = posts.data;
 
-    PostFactory.genres().success(function (data) {
-        $scope.genres = data;
+    PostFactory.tags().success(function (data) {
+        $scope.tags = data;
     });
 
    // filter method
@@ -46,9 +44,9 @@
         if ($scope.sortOn == "publishedOn") {
             $scope.orderBy = 'publishedOn';
             return "-publishedOn";
-        } else if ($scope.sortOn == "reviewCount") {
-            $scope.orderBy = 'reviews.length';
-            return -post.reviews.length;
+        } else if ($scope.sortOn == "sectionCount") {
+            $scope.orderBy = 'sections.length';
+            return -post.sections.length;
         }
     }
     

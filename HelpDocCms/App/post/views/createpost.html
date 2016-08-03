@@ -6,12 +6,16 @@
             <input type="text" class="form-control" id="title" ng-model="post.title">
         </div>
         <div class="form-group">
-            <label for="author">Author:</label>
+            <label for="author">User:</label>
             <input type="text" class="form-control" id="author" ng-model="post.createdBy">
         </div>
         <div class="form-group">
-            <label for="author">Genre:</label>
-            <input type="text" class="form-control" id="genre" ng-model="post.genre">
+            <label for="author">Body:</label>
+            <textarea class="form-control" id="body" ng-model="post.description"></textarea>
+        </div>
+        <div class="form-group">
+            <label for="author">Tag:</label>
+            <input type="text" class="form-control" id="tag" ng-model="post.tag">
         </div>
 
         <div class="form-group">

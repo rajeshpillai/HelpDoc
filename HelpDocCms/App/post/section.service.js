@@ -1,4 +1,4 @@
-﻿angular.module("post.module").factory("ReviewService", function ($resource, PostConfig) {
+﻿angular.module("post.module").factory("SectionService", function ($resource, PostConfig) {
     //var r = $resource('/api/post');
     /*
      * { 'get':    {method:'GET'},
@@ -10,14 +10,14 @@
      */
   
 
-    var resource = $resource('/api/post/review/:id',
+    var resource = $resource('/api/post/section/:id',
             { username: 'admin', postId: '@id' });
     return {
         get: function () {
             return resource.get({id: '@id'});
         },
-        save: function (review) {
-            return resource.save(review);
+        save: function (section) {
+            return resource.save(section);
         }
     }
 });

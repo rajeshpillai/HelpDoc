@@ -14,7 +14,6 @@
         PostFactory.update(this.post).success(function (id) {
             post.id = id;
             $location.url("/home");
-            //$scope.posts.push(post);
         });
     };
 });

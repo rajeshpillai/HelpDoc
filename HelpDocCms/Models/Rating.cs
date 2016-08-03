@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace BookReview.Models
+namespace HelpDoc.Models
 {
     public class Rating
     {

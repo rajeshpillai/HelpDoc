@@ -10,17 +10,17 @@
 
 angular.module("post.module").config(function ($routeProvider, $locationProvider, $httpProvider) {
     $routeProvider
-    .when("/home/:genre?", {
+    .when("/home/:tag?", {
         templateUrl: "index.html",
         controller: "posts.controller",
         resolve: {
             posts: function ($route, PostFactory) {
-                var genre = $route.current.params.genre;
-                if (genre == undefined) {
+                var tag = $route.current.params.tag;
+                if (tag == undefined) {
                     return PostFactory.getAll();
                 }
                 else {
-                    return PostFactory.getByGenre(genre);
+                    return PostFactory.getByTag(tag);
                 }
                 
             }
@@ -38,9 +38,9 @@ angular.module("post.module").config(function ($routeProvider, $locationProvider
         templateUrl: "app/post/views/show.html",
         controller: "post.controller"
     })
-    .when("/posts/review/:id", {
-        templateUrl: "app/post/views/reviews.html",
-        controller: "reviews.controller"
+    .when("/posts/section/:id", {
+        templateUrl: "app/post/views/sections.html",
+        controller: "sections.controller"
     });
 
     $locationProvider.html5Mode(true);

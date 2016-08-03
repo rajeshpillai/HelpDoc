@@ -1,4 +1,5 @@
-﻿using BookReview.Models;
+﻿using HelpDoc.Data;
+using HelpDoc.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,32 +7,35 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 
-namespace BookReview.Api
+namespace HelpDoc.Api
 {
     public class PostController : ApiController
     {
-        // GET: api/Book
+        HelpDb db = new HelpDb();
+
         
+
         [ActionName("allposts")]
         public IEnumerable<Post> Get()
         {
-            return StubData.Posts;
+            //return StubData.Posts;
+            return db.All();
         }
 
-        [ActionName("genres")]
+        [ActionName("tags")]
         [HttpGet]
-        public IEnumerable<Tag> Genres()
+        public IEnumerable<Tag> Tags()
         {
-            return StubData.Genres;
+            return db.Tags;
         }
 
-        [ActionName("bygenre")]
+        [ActionName("bytag")]
         [HttpGet]
-        public IEnumerable<Post> ByGenre(string id)
+        public IEnumerable<Post> ByTag(string id)
         {
-            var gen = StubData.Genres.Find(g => g.TagName.ToLower() == id.ToLower());
+            var tag = db.Tags.Where(g => g.TagName.ToLower() == id.ToLower()).FirstOrDefault();
 
-            var posts = StubData.Posts.Where(b => b.Genres.Contains(gen));
+            var posts = db.Posts.Where(b => b.Tags.Contains(tag));
 
             return posts;
         }
@@ -40,16 +44,16 @@ namespace BookReview.Api
         [ActionName("byid")]
         public Post Get(int id)
         {
-            var post = StubData.Posts.Where(b => b.Id == id).FirstOrDefault();
-            post.NormalizedRating = (int)post.Ratings.Average(b => b.Value);
+            var post = db.Posts.Where(b => b.Id == id).FirstOrDefault();
+            //post.NormalizedRating = (int)post.Ratings.Average(b => b.Value);
             return post;
         }
 
-        [ActionName("reviewsbypost")]
-        public List<Section> GetReviewsById(int id)
+        [ActionName("sectionsbypost")]
+        public List<Section> GetSectionsById(int id)
         {
-            var post = StubData.Posts.Where(b => b.Id == id).FirstOrDefault();
-            return post.Reviews;
+            var post = db.Posts.Where(b => b.Id == id).FirstOrDefault();
+            return post.Sections;
         }
 
         // POST: api/Book/update
@@ -57,8 +61,13 @@ namespace BookReview.Api
         [ActionName("update")]
         public int Post([FromBody]Post post)
         {
-            post.Id = StubData.Posts.Count() + 1;
-            StubData.Posts.Add(post);
+            post.Id = db.Posts.Count() + 1;
+
+            post.SortOrder = db.Posts.Max(p => p.SortOrder) + 1;
+
+            db.Posts.Add(post);
+            
+            db.Save(post);
 
             return post.Id;
         }
@@ -66,7 +75,7 @@ namespace BookReview.Api
         [ActionName("upvote")]
         public void UpVote([FromUri] int postId, string username)
         {
-            var post = StubData.Posts.Find(b => b.Id == postId);
+            var post = db.Posts.Where(b => b.Id == postId).FirstOrDefault();
             post.Rating++;
             post.Ratings.Add(new Rating
             {
@@ -80,26 +89,27 @@ namespace BookReview.Api
         [ActionName("downvote")]
         public void DownVote([FromUri] int postId, string username)
         {
-            var post = StubData.Posts.Find(b => b.Id == postId);
+            var post = db.Posts.Where(b => b.Id == postId).FirstOrDefault();
             post.Rating--;
             post.Ratings.RemoveAt(0);
         }
 
         
-        // POST: api/Book/review
-        [ActionName("review")]
-        public Section Post([FromBody]Section review, [FromUri]string username)
+        // POST: api/Book/section
+        [ActionName("section")]
+        public Section Post([FromBody]Section section, [FromUri]string username)
         {
-            review.Id = StubData.Reviews.Count() + 1;
-            review.Username = username;
-            review.User = StubData.Users.Where(u => u.Username.ToLower() == username.ToLower()).FirstOrDefault();
+            section.Id = db.Sections.Count() + 1;
+            section.Username = username;
+            section.User = db.Users.Where(u => u.Username.ToLower() == username.ToLower()).FirstOrDefault();
 
-            StubData.Reviews.Add(review);
+            db.Sections.Add(section);
 
-            var post = StubData.Posts.Find(b => b.Id == review.PostId);
-            post.Reviews.Add(review);
+            var post = db.Posts.Where(b => b.Id == section.PostId).FirstOrDefault();
+            post.Sections.Add(section);
 
-            return review;
+          
+            return section;
         }
 
         // PUT: api/Book/5
@@ -110,8 +120,8 @@ namespace BookReview.Api
         // DELETE: api/Book/5
         public void Delete(int id)
         {
-            var post = StubData.Posts.Where(b => b.Id == id).FirstOrDefault();
-            StubData.Posts.Remove(post);
+            var post = db.Posts.Where(b => b.Id == id).FirstOrDefault();
+            db.Posts.Remove(post);
         }
     }
 }

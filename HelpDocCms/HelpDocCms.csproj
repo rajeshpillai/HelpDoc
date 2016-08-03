@@ -11,8 +11,8 @@
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>BookReview</RootNamespace>
-    <AssemblyName>BookReview</AssemblyName>
+    <RootNamespace>HelpDoc</RootNamespace>
+    <AssemblyName>HelpDoc</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
@@ -130,12 +130,16 @@
   <ItemGroup>
     <Compile Include="Api\AuthController.cs" />
     <Compile Include="Api\PostController.cs" />
+    <Compile Include="Data\HelpRepository.cs" />
+    <Compile Include="Models\DbContext.cs" />
     <Compile Include="Models\Rating.cs" />
     <Compile Include="Models\Tag.cs" />
     <Compile Include="Utilities\IEncryptionHelper.cs" />
     <Compile Include="Utilities\SecurityUtil.cs" />
     <Content Include="App\common\directives\notification.directive.html" />
     <Content Include="App\common\directives\notification.directive.js" />
+    <Content Include="App\post\postdocument.directive.js" />
+    <Content Include="App\post\views\directives\post-document.html" />
     <Content Include="Content\app.css" />
     <Content Include="App\app.module.js" />
     <Content Include="App\auth\auth.controller.js" />
@@ -165,9 +169,9 @@
     <Content Include="App\post\collapsible.directive.js" />
     <Content Include="App\post\upvote.directive.js" />
     <Content Include="App\post\postThumbnail.directive.js" />
-    <Content Include="App\post\review.service.js" />
-    <Content Include="App\post\views\directives\postlist.html" />
-    <Content Include="App\post\views\directives\postthumbnail.html" />
+    <Content Include="App\post\section.service.js" />
+    <Content Include="App\post\views\directives\post-list.html" />
+    <Content Include="App\post\views\directives\post-thumbnail.html" />
     <Content Include="App\post\views\createpost.html" />
     <Content Include="App\post\views\directives\upvote.html" />
     <Content Include="App\post\views\show.html" />
@@ -176,8 +180,8 @@
     <Content Include="App\common\filters\filters.js" />
     <Content Include="App\common\nav.controller.js" />
     <Content Include="App\core\app.value.js" />
-    <Content Include="App\post\reviews.controller.js" />
-    <Content Include="App\post\views\reviews.html" />
+    <Content Include="App\post\sections.controller.js" />
+    <Content Include="App\post\views\sections.html" />
     <Content Include="App\core\constants.js" />
     <Content Include="App\rating\rating.service.js" />
     <Content Include="Content\bootstrap.css" />
@@ -287,6 +291,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="files\" />
     <Folder Include="Uploads\books\" />
   </ItemGroup>
   <ItemGroup>
@@ -298,6 +303,12 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Biggy\Biggy.csproj">
+      <Project>{49dbd996-032d-4b58-b35a-2621da0eaeaf}</Project>
+      <Name>Biggy</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

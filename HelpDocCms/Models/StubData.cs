@@ -1,26 +1,26 @@
-﻿using BookReview.Utilities;
+﻿using HelpDoc.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace BookReview.Models
+namespace HelpDoc.Models
 {
     public static class StubData
     {
         public static List<Post> Posts = new List<Post>();
         public static List<AppUser> Users = new List<AppUser>();
-        public static List<Section> Reviews = new List<Section>();
+        public static List<Section> Sections = new List<Section>();
         public static List<Rating> Ratings = new List<Rating>();
 
-        //public static List<string> Genres = new List<string>();
-        public static List<Tag> Genres = new List<Tag>();
+        //public static List<string> Tags = new List<string>();
+        public static List<Tag> Tags = new List<Tag>();
         static StubData()
         {
-            Genres.Add(new Tag("Customization"));
-            Genres.Add(new Tag("FAQ"));
-            Genres.Add(new Tag("How to Do?"));
-            Genres.Add(new Tag("Common Tasks"));
+            Tags.Add(new Tag("Customization"));
+            Tags.Add(new Tag("FAQ"));
+            Tags.Add(new Tag("Support"));
+            Tags.Add(new Tag("Common Tasks"));
 
             SetupData();
 
@@ -56,7 +56,7 @@ namespace BookReview.Models
             Users.Add(admin);
 
 
-            int reviewCount = 10;
+            int sectionCount = 10;
 
             Random rndDuration = new Random();
                     
@@ -73,25 +73,25 @@ namespace BookReview.Models
                     ReadingTime = rndDuration.Next(1, 12),
                     Description = "The content of the help goes here.  Be as detailed as possible. "
                     
-                    //Genre = Genres.ElementAt(rndDuration.Next(1, Genres.Count))
+                    //Tag = Tags.ElementAt(rndDuration.Next(1, Tags.Count))
                 };
 
-                var genCount = rndDuration.Next(1, Genres.Count);
+                var genCount = rndDuration.Next(1, Tags.Count);
 
                 for (var g = 0; g < genCount; g++)
                 {
-                    post.Genres.Add(Genres[g]);
-                    //Genres[g].Books.Add(post);
+                    post.Tags.Add(Tags[g]);
+                    //Tags[g].Books.Add(post);
                 }
 
-                if (i % 2 == 0) reviewCount = 20;  // random review count
+                if (i % 2 == 0) sectionCount = 20;  // random section count
 
-                for (var j = 1; j <= reviewCount; j++)
+                for (var j = 1; j <= sectionCount; j++)
                 {
                     var u = Users[j % 5];
-                    var review = new Section
+                    var section = new Section
                     {
-                        Title = "Review of " + post.Title,
+                        Title = "Section of " + post.Title,
                         Body = "An excellent post, " + post.Title ,
                         PostId = post.Id,
                         Id = i*j,
@@ -107,11 +107,11 @@ namespace BookReview.Models
                         Value =  rnd.Next(0,5)
                     };
 
-                    post.Reviews.Add(review);
+                    post.Sections.Add(section);
                     post.Ratings.Add(rating);
 
                     Ratings.Add(rating);
-                    Reviews.Add(review);
+                    Sections.Add(section);
 
                 }
 

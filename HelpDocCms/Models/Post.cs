@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
-namespace BookReview.Models
+namespace HelpDoc.Models
 {
     public class Post
     {
@@ -31,15 +31,17 @@ namespace BookReview.Models
         public int NormalizedRating { get; set; }
         public int Rating { get; set; }
 
-        public List<Section> Reviews { get; set; }
+        public decimal SortOrder { get; set; }
+
+        public List<Section> Sections { get; set; }
         public List<Rating> Ratings { get; set; }
 
-        public List<Tag> Genres { get; set; }
+        public List<Tag> Tags { get; set; }
         public Post()
         {
-            Reviews = new List<Section>();
+            Sections = new List<Section>();
             Ratings = new List<Rating>();
-            Genres = new List<Tag>();
+            Tags = new List<Tag>();
         }
 
     }

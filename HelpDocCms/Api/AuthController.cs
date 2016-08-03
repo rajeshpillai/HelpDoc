@@ -1,4 +1,4 @@
-﻿using BookReview.Models;
+﻿using HelpDoc.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,7 +6,7 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 
-namespace BookReview.Api
+namespace HelpDoc.Api
 {
     public class AuthController : ApiController
     {

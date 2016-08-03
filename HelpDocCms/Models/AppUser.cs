@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
-namespace BookReview.Models
+namespace HelpDoc.Models
 {
     public class AppUser
     {

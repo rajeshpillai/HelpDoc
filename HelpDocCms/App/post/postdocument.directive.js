@@ -1,12 +1,12 @@
-﻿angular.module("post.module").directive("postList", function () {
+﻿angular.module("post.module").directive("postDocument", function () {
     return {
         restrict: "E",
         replace: true,
-        scope:{
+        scope: {
             posts: "=posts",
             tagFilter: "=",
             search: "="
         },
-        templateUrl: "app/post/views/directives/post-list.html"
+        templateUrl: "app/post/views/directives/post-document.html"
     };
 });

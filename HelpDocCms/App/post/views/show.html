@@ -14,7 +14,7 @@
     <div class="col-md-7">
         <h1 class="post-title">{{post.postName}}({{post.publishedOn | date: 'yyyy'}})</h1>
 
-        <a ng-repeat="genre in post.genres" class="genre btn btn-info" href="#">{{genre.tagName}}</a>
+        <a ng-repeat="tag in post.tags" class="tag btn btn-info" href="#">{{tag.tagName}}</a>
 
         <div class="overview">{{post.description}}</div>
 

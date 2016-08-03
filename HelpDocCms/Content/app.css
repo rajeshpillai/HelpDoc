@@ -66,10 +66,10 @@ img.thumbnail {
 	float: right;
 }
 
-.genre {
+.tag {
     margin: 5px;
 }
-.genre-title {
+.tag-title {
 	text-align: right;
 	margin-bottom: 10px;
 }
