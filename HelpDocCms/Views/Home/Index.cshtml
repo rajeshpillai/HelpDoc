@@ -1,0 +1,22 @@
+﻿@{
+    ViewBag.Title = "Book Review App";
+}
+
+<div ng-app="book.module">
+    <nav class="navbar navbar-default" ng-controller="nav.controller">
+        <ul class="nav navbar-nav">
+            <li class="active"><a href="#" ng-click="loadHomePage()">Home</a></li>
+            <li><a href="#" ng-click="loadAddView()">ADD BOOK</a></li>
+            <li ng-controller="auth.controller" class="pull-right">
+                <a href="#" ng-click="logout()"
+                   ng-show="showLogout">Logout < {{username}}</a>
+            </li>
+        </ul>
+    </nav>
+
+    <div ng-view class="container">
+
+    </div>
+
+</div>
+

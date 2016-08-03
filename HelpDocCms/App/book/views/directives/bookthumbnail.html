@@ -1,0 +1,41 @@
+﻿<div class="row" style="margin-bottom:10px;"
+     id="anchor{{book.id}}"
+     data-ng-repeat="book in books | orderBy:sortFn  | filter:search |filter:genreFilter track by $index">
+
+    <!--voting-->
+    <div class="col-md-1">
+        <upvote upvote="upVoteBook(book)" downvote="downVoteBook(book)" count="book.rating"></upvote>
+    </div>
+    <div class="col-sm-12 col-md-10">
+        <div class="thumbnail" style="padding:10px;">
+            <div class="row">
+                <div class="col-md-6 caption" style="margin-left:10px;">
+                    <!--<h4>{{book.bookName}} </h4>-->
+                    <collapsible title="{{book.bookName}}">
+                        <span>published on  {{book.publishedOn | date: myFormat}}</span>
+                        <p>{{book.author}}</p> <span>reviews: {{book.reviews.length}}</span>
+
+                        <br />
+                        Genre:
+                        <a ng-repeat="genre in book.genres" class="genre label label-info"
+                           ng-href="/home/{{genre.tagName}}">{{genre.tagName}}
+                        </a>
+
+                        <br />
+                        <p>Reading time: <span class="label label-success">{{book.readingTime | durations }} </span>  </p>
+                        <p ng-bind-html="book.bookUrl"></p>
+                        <p>
+                            <a class="btn btn-primary" data-ng-href="/books/show/{{book.id}}">VIEW DETAILS</a>
+                            <a class="btn btn-default" data-ng-href="/books/review/{{book.id}}">REVIEWS</a>
+                        </p>
+                    </collapsible>
+                </div>
+                <div class="col-md-4 pull-right">
+                    <img style="max-height:200px" ng-src="{{book.bookImageUrl}}" />
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</div>

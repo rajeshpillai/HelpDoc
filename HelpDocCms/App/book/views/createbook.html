@@ -1,0 +1,28 @@
+﻿<h2>Add a new book</h2>
+<div>
+    <form name="newBook" role="form">
+        <div class="form-group">
+            <label for="bookName">Book name:</label>
+            <input type="text" class="form-control" id="bookName" ng-model="book.bookName">
+        </div>
+        <div class="form-group">
+            <label for="author">Author:</label>
+            <input type="text" class="form-control" id="author" ng-model="book.author">
+        </div>
+        <div class="form-group">
+            <label for="author">Genre:</label>
+            <input type="text" class="form-control" id="genre" ng-model="book.genre">
+        </div>
+
+        <div class="form-group">
+            <label for="publishedOn">Published On:</label>
+            <input type="text" class="form-control" id="publishedOn" ng-model="book.publishedOn" 
+                   date-keys date-picker>
+        </div>
+         
+        <button type="submit" class="btn btn-default" data-ng-click="update()">Submit</button>
+
+    </form>
+
+
+</div>

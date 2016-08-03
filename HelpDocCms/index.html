@@ -1,0 +1,107 @@
+﻿<style>
+    .votes, .vote {
+        display: inline-block;
+    }
+
+    .vote {
+        vertical-align: middle;
+    }
+
+    .notification {
+        /*position: fixed;*/
+        left: 80%;
+        top: 100px;
+        margin-right: 0;
+        z-index: 2000;
+    }
+
+    .active {
+        background-color: yellow;
+    }
+</style>
+
+
+<div notification>
+    <p>Modal Content Goes here<p>
+</div>
+
+<div class="well">
+    <h4>Showing books by {{filterGenre}}</h4>
+    <div>
+        <div class="layout" style="float:right">
+            <div>
+                <span class="label label-danger">debug:</span>
+                <input type="checkbox" class="float:right" ng-model="debug" />
+            </div>
+            <form name="layoutForm" style="display:inline-block;float:right;clear:both">
+                <span class="label label-info">layout:</span>&raquo;<label>
+                    <input type="radio" ng-model="layout" value="layout-grid" ng-click="layoutChange()">
+                    grid
+                </label>
+                <label>
+                    <input type="radio" ng-model="layout" value="layout-table"
+                           ng-click="layoutChange()">
+                    table
+                </label>
+            </form>
+        </div>
+
+        Genres:
+        <select name="mySelect" id="mySelect"
+                ng-options="option.tagName for option in genres"
+                ng-model="genreFilter"></select>
+    </div>
+
+    <br />
+
+    <!--Search filters-->
+    <div>
+        Search:
+        <input type="text" class="float:left" style="width:200px" ng-model="search" placeholder="search" />
+    </div>
+
+
+    <br /><br />
+
+    <!-- Anchors -->
+    <div class="anchor">
+        <a href="" ng-click="gotoAnchor(book.id)" ng-repeat="book in books | orderBy:sortFn  | filter:search | filter:genreFilter track by $index">
+            {{book.id}}
+        </a>
+    </div>
+
+    <!-- main content-->
+    <div style="margin-top:50px;">
+        <div class="row" style="margin-bottom:10px;">
+            <div class="col-sm-12 col-md-9" ng-if="layout == 'layout-grid'">
+                <book-thumbnail books="books" genre-filter="genreFilter" search="search"></book-thumbnail>
+            </div>
+            <div class="col-sm-12 col-md-9" ng-if="layout == 'layout-table'">
+                <book-list books="books" genre-filter="genreFilter" search="search"></book-list>
+            </div>
+
+            <!--- genres-->
+            <div class="col-sm-2">
+                <div class="section-title genre-title">by genre</div>
+                <div class="list-group">
+                    <a href="#" class="list-group-item">
+                        <span class="badge">{{book.readingTime}}</span>
+                        All
+                    </a>
+                    <a href="/home/{{genre.tagName}}" ng-class="{active: genre.tagName==filterGenre}" class="list-group-item" ng-repeat="genre in genres">
+                        <span class="badge">{{genre.length}}</span>
+                        {{genre.tagName}}
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        
+    </div>
+
+    <div id="debug" ng-if="debug">
+        <pre>{{ books | json}}</pre>
+    </div>
+
+</div>
+

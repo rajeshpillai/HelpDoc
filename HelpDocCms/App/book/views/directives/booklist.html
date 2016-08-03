@@ -1,0 +1,30 @@
+﻿<table class="table table-striped table-bordered ng-cloak">
+    <thead>
+        <tr>
+            <td>Id</td>
+            <td>Book Name</td>
+            <td>Author </td>
+            <td>Genre</td>
+            <td><a href="#" ng-click="orderBy='readingTime';reverse = !reverse">Reading Time</a></td>
+            <td><a href="#" ng-click="orderBy='reviews.length';reverse = !reverse">Reviews</a></td>
+            <td><a href="#" ng-click="orderBy='publishedOn';reverse = !reverse">Published On</a></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr id="anchor{{book.id}}" data-ng-repeat="book in books | orderBy: orderBy : reverse  | filter:search  |filter:genreFilter track by $index">
+            <td>{{ book.id }}</td>
+            <td>{{ book.bookName }}</td>
+            <td>{{ book.author }}</td>
+            <td>{{ book.genre}}</td>
+            <td>{{ book.readingTime | durations }}</td>
+            <td><span>{{book.reviews.length}}</span></td>
+            <td>{{book.publishedOn | date:mediumDate}}</td>
+            <td><span ng-bind-html="book.bookUrl"></span></td>
+            <td><a data-ng-href="/books/show/{{book.id}}">VIEW DETAILS</a></td>
+            <td><a data-ng-href="/books/review/{{book.id}}">REVIEWS</a></td>
+        </tr>
+    </tbody>
+</table>
