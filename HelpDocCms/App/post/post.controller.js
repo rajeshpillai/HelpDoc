@@ -1,4 +1,4 @@
-﻿angular.module("post.module").controller('post.controller', function ($scope, $route, $location, $routeParams, $stateParams, $state,  PostFactory) {
+﻿angular.module("post.module").controller('post.controller', function ($scope, $route, $sce, $location, $routeParams, $stateParams, $state,  PostFactory) {
     $scope.message = "Post details";
 
     // todo: ngRoute has to be replaced with ui-router
@@ -8,6 +8,7 @@
     
     PostFactory.getById(id).success(function (data) {
         $scope.post = data;
+        $scope.post.description = $sce.trustAsHtml($scope.post.description);
     });
 
     // addnew post

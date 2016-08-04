@@ -4,7 +4,8 @@
      'ngResource',
      'ngAnimate',
      'ngCookies',
-     'ui.router'
+     'ui.router',
+     'ui.tinymce'
     ]
 );
 

@@ -15,9 +15,9 @@
         <h1 class="post-title">{{post.postName}}({{post.publishedOn | date: 'yyyy'}})</h1>
 
         <a ng-repeat="tag in post.tags" class="tag btn btn-info" href="#">{{tag.tagName}}</a>
-
-        <div class="overview">{{post.description}}</div>
-
+         
+        <div class="overview" data-ng-bind-html="post.description"></div>
+        
         <div class="extra-details">
             <kbd>Reading Time: {{post.readingTime | durations}} </kbd>
             <kbd>Author: {{post.author}}</kbd>

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 
 namespace HelpDoc.Models
 {
@@ -14,6 +15,7 @@ namespace HelpDoc.Models
         [StringLength(50)]
         public string Title { get; set; }
 
+        [AllowHtml]
         public string Description { get; set; }
 
         [StringLength(50)]
