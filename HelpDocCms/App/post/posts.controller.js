@@ -1,5 +1,5 @@
 ﻿angular.module("post.module").controller('posts.controller',
-    function ($scope, $anchorScroll, $location, $routeParams, $stateParams, $cookies, $locale, PostFactory, AuthSessionService) {
+    function ($scope,  $anchorScroll, $location, $routeParams, $stateParams, $cookies, $locale, PostFactory, AuthSessionService) {
     /*
      * NOTES:  posts is injected from 'route resolve'
      */
@@ -35,7 +35,17 @@
         })
     }
 
+    $scope.$on("onNewPost", function (event, post) {
+        $scope.posts.push(post);
+    });
+
+
+    $scope.$on("onRemovePost", function (event, post) {
+        var index = $scope.posts.indexOf(post);
+        $scope.posts.splice(index);
+    });
     
+
     PostFactory.tags().success(function (data) {
         $scope.tags = data;
     });
@@ -94,6 +104,7 @@
          var result = confirm("You are about to delete document " + post.title + ".  Are you sure?");
         if (result === true) {
             PostFactory.remove(post.id);
+            $scope.$emit('onRemovePost', post);
         }
     }
 });
