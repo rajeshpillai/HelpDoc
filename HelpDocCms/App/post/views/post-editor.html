@@ -55,6 +55,9 @@
                  .replace(/</g, '&lt;')
                  .replace(/>/g, '&gt;');
     }
+
+    //TODO:https://github.com/LPology/Simple-Ajax-Uploader
+
     $(function () {
         var btn = document.getElementById('uploadBtn'),
             progressBar = document.getElementById('progressBar'),
@@ -84,8 +87,6 @@
 
                 var img = "<img  src = '" + response.file + "' />"; // todo: RP
                 
-                //console.log(img);
-
                 tinyMCE.activeEditor.execCommand("mceInsertContent", true, img);
 
                 progressOuter.style.display = 'none'; // hide progress bar when upload is completed
