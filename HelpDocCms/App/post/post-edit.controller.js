@@ -13,7 +13,8 @@
         plugins: 'autolink link image lists charmap',
         skin: 'lightgray',
         theme: 'modern',
-        menubar: false
+        menubar: false,
+        images_upload_url: "/api/post/uploadimage",
     };
     
     PostFactory.getById(id).success(function (data) {

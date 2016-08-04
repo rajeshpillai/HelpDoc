@@ -2,10 +2,15 @@
 using HelpDoc.Models;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Text;
+using System.Web;
+using System.Web.Helpers;
 using System.Web.Http;
+using System.Web.Http.Results;
 
 namespace HelpDoc.Api
 {
@@ -86,7 +91,52 @@ namespace HelpDoc.Api
             return post.Id;
         }
 
-        [ActionName("upvote")]
+        [ActionName("uploadimage")]
+        public HttpResponseMessage TinyMceUpload()
+        {
+            var file = HttpContext.Current.Request.Files.Count > 0 ?
+                        HttpContext.Current.Request.Files[0] : null;
+
+            var location = SaveFile(HttpContext.Current.Server.MapPath("~/uploads/"), file);
+
+            //{"success":true,"file":"img_57a30bbec2fa34.24917109.png"}
+            var response = this.Request.CreateResponse(HttpStatusCode.OK);
+            string jsonString = "{\"success\":\"true\", \"file\":\"" + location + "\"}";
+
+            response.Content = new StringContent(jsonString, Encoding.UTF8, "application/json");
+            return response;
+        }
+
+        private static string SaveFile(string targetFolder, HttpPostedFile file)
+        {
+            const int megabyte = 1024 * 1024;
+
+            if (!file.ContentType.StartsWith("image/"))
+            {
+                throw new InvalidOperationException("Invalid MIME content type.");
+            }
+
+            var extension = Path.GetExtension(file.FileName.ToLowerInvariant());
+            string[] extensions = { ".gif", ".jpg", ".png" };
+            if (!extensions.Contains(extension))
+            {
+                throw new InvalidOperationException("Invalid file extension.");
+            }
+
+            if (file.ContentLength > (8 * megabyte))
+            {
+                throw new InvalidOperationException("File size limit exceeded.");
+            }
+
+            var fileName = Guid.NewGuid() + extension;
+            var path = Path.Combine(targetFolder, fileName);
+            file.SaveAs(path);
+
+            return Path.Combine("/uploads", fileName).Replace('\\', '/');
+        }
+    
+
+         [ActionName("upvote")]
         public void UpVote([FromUri] int postId, string username)
         {
             var post = db.Posts.Where(b => b.Id == postId).FirstOrDefault();
