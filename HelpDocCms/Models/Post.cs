@@ -38,6 +38,8 @@ namespace HelpDoc.Models
         public List<Section> Sections { get; set; }
         public List<Rating> Ratings { get; set; }
 
+        public int? ParentId { get; set; }
+
         public List<Tag> Tags { get; set; }
         public Post()
         {

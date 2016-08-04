@@ -20,7 +20,10 @@
     
     PostFactory.getById(id).success(function (data) {
         $scope.post = data;
-      
+        
+        PostFactory.getAll().success(function (all) {
+            $scope.menus = all;
+        });
     });
 
     // addnew post

@@ -2,6 +2,14 @@
 <div class="post-editor">
     <form name="newBook" role="form">
         <div class="form-group">
+            <label for="title">Parent:</label>
+            <select class="form-control" 
+                    ng-model="post.parentId" 
+                    ng-options="p.id as p.title for p in menus">
+               </select>
+
+        </div>
+        <div class="form-group">
             <label for="title">Title:</label>
             <input type="text" class="form-control" id="title" ng-model="post.title">
         </div>
