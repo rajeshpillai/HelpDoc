@@ -1,5 +1,5 @@
 ﻿angular.module("post.module").controller('posts.controller',
-    function ($scope, $anchorScroll, $location, $routeParams, $stateParams, $cookies, $locale, PostFactory, AuthSessionService, RatingService) {
+    function ($scope, $anchorScroll, $location, $routeParams, $stateParams, $cookies, $locale, PostFactory, AuthSessionService) {
     /*
      * NOTES:  posts is injected from 'route resolve'
      */

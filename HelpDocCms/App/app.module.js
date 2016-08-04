@@ -84,6 +84,7 @@ angular.module("post.module").config(function ($routeProvider, $locationProvider
 
 });
 
+/*
 angular.module("post.module").config(function ($provide) {
     $provide.decorator("$exceptionHandler",
         ["$delegate",
@@ -101,6 +102,7 @@ angular.module("post.module").config(function ($provide) {
         ]
         );
 });
+*/
 
 
 //angular.module("post.module").run(function ($rootScope, $templateCache) {

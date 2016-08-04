@@ -10,7 +10,8 @@
             // put logic here for keypress and cut/paste changes
         },
         inline: false,
-        plugins: 'autolink link image lists charmap',
+        plugins: 'autolink link lists charmap fullscreen code',
+        toolbar: 'code | undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link ',
         skin: 'lightgray',
         theme: 'modern',
         menubar: false,
